@@ -1,0 +1,4 @@
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+1 17	* * *	root	(/opt/site-shooter.py 2>&1 1> /dev/null)

@@ -1,0 +1,364 @@
+config:
+    google-drive:
+        credential: ""
+        account-email: ""
+        user-email: ""
+        parent-id: ""
+
+    output-directory: /tmp
+    extension: jpg
+    headers:
+        Accept-Language: "ko-KR, en-US"
+
+newstapa.org:
+    url: http://newstapa.org
+    devices:
+        - desktop_800
+        - desktop_1366
+        - desktop_1920
+        - apple_ipad_1_2
+        - apple_ipad_3_4_air
+        - apple_ipad_mini
+        - apple_ipad_mini_2_3
+        - apple_ipad_pro
+        - apple_iphone_3
+        - apple_iphone_4
+        - apple_iphone_5
+        - apple_iphone_6
+        - apple_iphone_6_plus
+        - apple_ipod_touch
+        - samsung_galaxy_nexus
+        - lg_nexus_5
+        - lg_nexus_4
+        - motorola_nexus_6
+        - samsung_nexus_10
+        - htc_nexus_9
+        - asus_nexus_7_v2
+        - asus_nexus_7_v1
+        - samsung_galaxy_note_2
+        - samsung_galaxy_note
+        - samsung_galaxy_s5
+        - samsung_galaxy_s4
+        - samsung_galaxy_s4_mini
+        - samsung_galaxy_s3
+        - samsung_galaxy_s3_mini
+        - samsung_galaxy_s2
+        - samsung_galaxy_s
+        - samsung_galaxy_nexus
+        - lg_g4
+        - lg_g3
+        - lg_optimus_g
+        - microsoft_lumia_1020
+
+preset:
+    desktop_800:
+        width: 800
+        height: 600
+        flip: false
+
+    desktop_1366:
+        width: 1366
+        height: 3768
+        flip: false
+
+    desktop_1920:
+        width: 1920
+        height: 1080
+        flip: false
+
+    apple_iphone_6:
+        width: 375
+        height: 667
+
+    apple_iphone_5:
+        width: 320
+        height: 568
+
+    apple_iphone_4:
+        width: 320
+        height: 480
+
+    apple_iphone_3:
+        width: 320
+        height: 480
+
+    apple_ipod_touch:
+        width: 320
+        height: 568
+
+    lg_g4:
+        width: 360
+        height: 640
+
+    lg_g3:
+        width: 360
+        height: 640
+
+    lg_optimus_g:
+        width: 384
+        height: 640
+
+    samsung_galaxy_note_2:
+        width: 360
+        height: 640
+
+    samsung_galaxy_note:
+        width: 400
+        height: 640
+
+    samsung_galaxy_s5:
+        width: 360
+        height: 640
+
+    samsung_galaxy_s4:
+        width: 360
+        height: 640
+
+    samsung_galaxy_s4_mini:
+        width: 360
+        height: 640
+
+    samsung_galaxy_s3:
+        width: 360
+        height: 640
+
+    samsung_galaxy_s3_mini:
+        width: 320
+        height: 533
+
+    samsung_galaxy_s2:
+        width: 320
+        height: 533
+
+    samsung_galaxy_s:
+        width: 320
+        height: 533
+
+    samsung_galaxy_nexus:
+        width: 360
+        height: 600
+
+    lg_nexus_5:
+        width: 360
+        height: 640
+
+    lg_nexus_4:
+        width: 384
+        height: 640
+
+    microsoft_lumia_1020:
+        width: 320
+        height: 480
+
+    microsoft_lumia_925:
+        width: 320
+        height: 480
+
+    microsoft_lumia_920:
+        width: 320
+        height: 480
+
+    microsoft_lumia_900:
+        width: 320
+        height: 480
+
+    microsoft_lumia_830:
+        width: 320
+        height: 480
+
+    microsoft_lumia_620:
+        width: 320
+        height: 480
+
+    htc_one:
+        width: 360
+        height: 640
+
+    htc_8x:
+        width: 320
+        height: 480
+
+    htc_evo_3d:
+        width: 360
+        height: 640
+
+    sony_xperia_z3:
+        width: 360
+        height: 598
+
+    sony_xperia_z:
+        width: 360
+        height: 640
+
+    sony_xperia_s:
+        width: 360
+        height: 640
+
+    sony_xperia_p:
+        width: 360
+        height: 640
+
+    xiaomi_mi_4:
+        width: 360
+        height: 640
+
+    xiaomi_mi_3:
+        width: 360
+        height: 640
+
+    lenovo_k900:
+        width: 360
+        height: 640
+
+    pantech_vega_n°6:
+        width: 360
+        height: 640
+
+    blackberry_leap:
+        width: 390
+        height: 695
+
+    blackberry_passport:
+        width: 504
+        height: 504
+
+    blackberry_classic:
+        width: 390
+        height: 390
+
+    blackberry_q10:
+        width: 346
+        height: 346
+
+    blackberry_z30:
+        width: 360
+        height: 640
+
+    blackberry_z10:
+        width: 384
+        height: 640
+
+    blackberry_torch_9800:
+        width: 360
+        height: 480
+
+    zte_grand_s:
+        width: 360
+        height: 640
+
+    zte_open_firefox_os:
+        width: 320
+        height: 480
+
+    apple_iphone_6_plus:
+        width: 414
+        height: 736
+
+    motorola_nexus_6:
+        width: 412
+        height: 690
+
+    microsoft_lumia_1520:
+        width: 432
+        height: 768
+
+    samsung_galaxy_note_4:
+        width: 360
+        height: 640
+
+    samsung_galaxy_note_3:
+        width: 360
+        height: 640
+
+    apple_ipad_pro:
+        width: 1024
+        height: 1366
+
+    apple_ipad_3_4_air:
+        width: 768
+        height: 1024
+
+    apple_ipad_1_2:
+        width: 768
+        height: 1024
+
+    apple_ipad_mini_2_3:
+        width: 768
+        height: 1024
+
+    apple_ipad_mini:
+        width: 768
+        height: 1024
+
+    samsung_galaxy_tab_3_10_inch:
+        width: 800
+        height: 1280
+
+    samsung_galaxy_tab_2_10_inch:
+        width: 800
+        height: 1280
+
+    samsung_galaxy_tab_8.9_inch:
+        width: 800
+        height: 1280
+
+    samsung_galaxy_tab_2_7_inch:
+        width: 600
+        height: 1024
+
+    samsung_nexus_10:
+        width: 800
+        height: 1280
+
+    htc_nexus_9:
+        width: 768
+        height: 1024
+
+    asus_nexus_7_v2:
+        width: 600
+        height: 960
+
+    asus_nexus_7_v1:
+        width: 604
+        height: 966
+
+    lg_g_pad_8.3:
+        width: 600
+        height: 960
+
+    amazon_kindle_fire_hd_8.9:
+        width: 800
+        height: 1280
+
+    amazon_kindle_fire_hd_7:
+        width: 480
+        height: 800
+
+    amazon_kindle_fire:
+        width: 600
+        height: 1024
+
+    microsoft_surface_pro_3:
+        width: 1024
+        height: 1440
+
+    microsoft_surface_pro_2:
+        width: 720
+        height: 1280
+
+    microsoft_surface_pro:
+        width: 720
+        height: 1280
+
+    microsoft_surface:
+        width: 768
+        height: 1366
+
+    blackberry_playbook:
+        width: 600
+        height: 1024
+
+    google_glass:
+        width: 427
+        height: 240
+
