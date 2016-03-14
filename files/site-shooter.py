@@ -12,6 +12,7 @@ import sys
 import time
 import uuid
 import yaml
+from PIL import Image
 
 from ss.gd import GoogleDrive
 
@@ -28,6 +29,8 @@ RE_STRIP_URL = re.compile('^(http|https)://')
 GD = None
 GD_PARENTS = dict()
 GD_THIS_TIMES = dict()
+IMG_MAX_WIDTH = 4000
+IMG_MAX_HEIGHT = 8000
 
 
 def renderURL(url, output, size=None, headers=None):
@@ -49,7 +52,6 @@ def renderURL(url, output, size=None, headers=None):
             cmd.append('%s: %s' % (k, v))
 
     exit = subprocess.call(cmd, stdout=subprocess.PIPE)
-    # exit = subprocess.call(cmd)
 
     return exit == 0
 
@@ -97,15 +99,36 @@ def read_config(f):
     )
 
 
-def upload(f, service, device, size, ext='jpg'):
+def handle_image(f):
+    im = Image.open(f)
+    w, h = im.size
+    if w < IMG_MAX_WIDTH and h < IMG_MAX_HEIGHT:
+        return (f, False)
+
+    if w > IMG_MAX_WIDTH:
+        w = IMG_MAX_WIDTH
+    if h > IMG_MAX_HEIGHT:
+        h = IMG_MAX_HEIGHT
+
+    cropped = os.path.join(
+        os.path.dirname(f),
+        ('croppred-%s' % os.path.basename(f))
+    )
+    im.crop((0, 0, w, h)).save(cropped)
+
+    return (cropped, True)
+
+
+def upload(f, service, device, size, ext='jpg', **kw):
     service_name = service.get('name')
-    filename = '%(device)s%(flipped)s.%(ext)s' % dict(
+    filename = '%(device)s%(flipped)s%(cropped)s.%(ext)s' % dict(
         service=service_name,
         device=device.get('name'),
         size=('%dx%d' % size[:2]),
         time=datetime.datetime.now().strftime('%Y%m%d.%H%M%S'),
         ext=ext,
         flipped=('-%s' % size[2]) if size[2] else '',
+        cropped='-cropped' if kw.get('cropped') else '',
     )
     log.debug('\ttrying to upload: `%s`', filename)
 
@@ -121,7 +144,7 @@ def upload(f, service, device, size, ext='jpg'):
         GD_THIS_TIMES[service_name] = this_time.get('id')
 
     success = GD.upload(
-        file(f).read(),
+        f,
         filename=filename,
         mimetype=mimetypes.guess_type(filename)[0],
         parent_ids=(GD_THIS_TIMES[service_name],),
@@ -249,11 +272,14 @@ if __name__ == '__main__':
 
                 if success:
                     s = time.time()
-                    upload(output, service, device, size)
+                    new_file, cropped = handle_image(output)
+                    upload(new_file, service, device, size, cropped=cropped)
                     log.debug('\t%10.5f spent to upload', (time.time() - s))
 
                     # remove output
                     os.remove(output)
+                    if os.path.exists(new_file):
+                        os.remove(new_file)
 
                 log.debug('\t%10.5f spent', (time.time() - s))
 

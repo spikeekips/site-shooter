@@ -1,4 +1,5 @@
 import uuid
+import os
 import json  # noqa
 import logging
 import httplib2
@@ -67,17 +68,16 @@ class GoogleDrive(object):
 
     def upload(self, content, parent_ids=None, filename=None, description=None, mimetype='application/octet-stream', **options):
         if isinstance(content, file):
-            media_body = apiclient_http.MediaInMemoryUpload(
-                content,
-                mimetype=mimetype,
-                resumable=True,
-            )
+            content.seek(0, 0)
+            content = content.read()
+            cls = apiclient_http.MediaInMemoryUpload
         else:
-            media_body = apiclient_http.MediaInMemoryUpload(
-                content,
-                mimetype=mimetype,
-                resumable=True,
-            )
+            if os.path.exists(content):  # this is file
+                cls = apiclient_http.MediaFileUpload
+            else:
+                cls = apiclient_http.MediaInMemoryUpload
+
+        media_body = cls(content, mimetype=mimetype, resumable=True)
 
         body = dict(
             name=filename if filename else uuid.uuid1().hex,
